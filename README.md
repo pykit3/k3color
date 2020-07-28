@@ -1,29 +1,27 @@
-# pk3proc
+# k3color
 
-[![Build Status](https://travis-ci.com/pykit3/pk3proc.svg?branch=master)](https://travis-ci.com/pykit3/pk3proc)
-[![Documentation Status](https://readthedocs.org/projects/pk3proc/badge/?version=stable)](https://pk3proc.readthedocs.io/en/stable/?badge=stable)
+[![Build Status](https://travis-ci.com/pykit3/k3color.svg?branch=master)](https://travis-ci.com/pykit3/k3color)
+[![Documentation Status](https://readthedocs.org/projects/k3color/badge/?version=stable)](https://k3color.readthedocs.io/en/stable/?badge=stable)
+[![Package](https://img.shields.io/pypi/pyversions/k3color)](https://pypi.org/project/k3color)
 
-no desc
+create colored text on terminal
+
+k3color is a component of [pykit3] project: a python3 toolkit set.
+
 
 # Install
 
 ```
-pip install pk3proc
+pip install k3color
 ```
 
 # Synopsis
 
 ```python
-import pk3proc
+# output text in blue:
+>>> blue('I am blue')
+ '\x01\x1b[38;5;67m\x02I am blue\x01\x1b[0m\x02'
 
-# execute a shell script
-returncode, out, err = pk3proc.shell_script('ls / | grep bin')
-print returncode
-print out
-# output:
-# > 0
-# > bin
-# > sbin
 ```
 
 #   Author
@@ -35,3 +33,6 @@ Zhang Yanpo (张炎泼) <drdr.xp@gmail.com>
 The MIT License (MIT)
 
 Copyright (c) 2015 Zhang Yanpo (张炎泼) <drdr.xp@gmail.com>
+
+
+[pykit3]: https://github.com/pykit3

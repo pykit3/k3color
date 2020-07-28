@@ -3,10 +3,18 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-this-package
+k3color
 ==========
 
-pykit3 is is a collection of toolkit in python3.
+.. automodule:: k3color
+
+This snippet will output colored text on a terminal::
+
+   from k3color import blue
+   from k3color import green
+   blue("blue") + " and " + green("green")
+
+.. image::  res/colored-string.png
 
 .. toctree::
    :maxdepth: 2
@@ -16,27 +24,53 @@ pykit3 is is a collection of toolkit in python3.
    :depth: 4
    :local:
 
-Documentation for the Code
+Working with prompt
 **************************
 
-.. automodule:: this-package
+To use colored string with terminal prompt,
+the terminal prompt is not wrapping correctly with very long commands.
+You need `prompt=true` to tell `Str` to fix these issues::
+
+   prompt = Str('colored prompt# ', color='red', prompt=True)
+
+Those screenshots show this issue, the cursor is box.
+
+`prompt=False` long command:
+
+.. image:: res/colored-false-prompt.png
+
+`prompt=False` long command after **Home Key**:
+
+.. image:: res/colored-false-prompt-home-key.png
+
+`prompt=False` long command after **End Key**:
+
+.. image:: res/colored-false-prompt-end-key.png
+
+`prompt=True` long command:
+
+.. image:: res/colored-true-prompt.png
+
+`prompt=True` long command after **Home Key**:
+
+.. image:: res/colored-true-prompt-home-key.png
+
+`prompt=True` long command after **End Key**:
+
+.. image:: res/colored-true-prompt-end-key.png
 
 
-Exceptions
+
+Classes
 ----------
 
-.. autoexception::  CalledProcessError
-.. autoexception::  ProcError
-.. autoexception::  TimeoutExpired
-
+.. autoclass::  Str
 
 Functions
 ---------
 
-.. autofunction::  command
-.. autofunction::  command_ex
-.. autofunction::  shell_script
-.. autofunction::  start_process
+.. autofunction::  fading_color
+.. autofunction::  percentage
 
 Indices and tables
 ==================

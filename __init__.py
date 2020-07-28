@@ -1,29 +1,29 @@
 """
-package-name is utility to create sub process.
-
-Execute a shell script::
-
-    import pk3proc
-
-    # execute a shell script
-
-    returncode, out, err = pk3proc.shell_script('ls / | grep bin')
-    print returncode
-    print out
-    # output:
-    # > 0
-    # > bin
-    # > sbin
-
-Run a command::
-
-    # Unlike the above snippet, following statement does not start an sh process.
-    returncode, out, err = pk3proc.command('ls', 'a*', cwd='/usr/local')
-
+k3color creates colored text on terminal.
 """
 
-# from .proc import CalledProcessError
-# from .proc import ProcError
+from .color import (
+    percentage,
+    Str,
+    fading_color,
 
-__version__ = "0.2.2"
-__name__ = "k3proc"
+    blue,
+    cyan,
+    green,
+    purple,
+    red,
+    white,
+    yellow,
+
+    dark,
+
+    optimal,
+    normal,
+    loaded,
+    warn,
+    danger,
+
+)
+
+__version__ = "0.1.0"
+__name__ = "k3color"
