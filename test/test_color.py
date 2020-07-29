@@ -8,6 +8,7 @@ import k3ut
 
 dd = k3ut.dd
 
+
 class TestColoredString(unittest.TestCase):
 
     cs = k3color.Str
@@ -149,49 +150,49 @@ class TestColoredString(unittest.TestCase):
 
     def test_split(self):
         color_cases = [
-            ([('asd ', 'red'), ('fer ', 'blue'),  ('fg', 'white')],
+            ([('asd ', 'red'), ('fer ', 'blue'), ('fg', 'white')],
              (' ', 0),
-             [[('asd ', 'red'), ('fer ', 'blue'),  ('fg', 'white')]],
+             [[('asd ', 'red'), ('fer ', 'blue'), ('fg', 'white')]],
              'test maxsplit 0',
              ),
 
-            ([('asd ', 'red'), ('fer ', 'blue'),  ('fg', 'white')],
+            ([('asd ', 'red'), ('fer ', 'blue'), ('fg', 'white')],
              (' ', 1),
-             [[('asd', 'red')], [('fer ', 'blue'),  ('fg', 'white')]],
+             [[('asd', 'red')], [('fer ', 'blue'), ('fg', 'white')]],
              'test maxsplit 1',
              ),
 
-            ([('asd ', 'red'), ('fer ', 'blue'),  ('fg', 'white')],
+            ([('asd ', 'red'), ('fer ', 'blue'), ('fg', 'white')],
              (' ', -1),
-             [[('asd', 'red')], [('fer', 'blue')],  [('fg', 'white')]],
+             [[('asd', 'red')], [('fer', 'blue')], [('fg', 'white')]],
              'test maxsplit -1',
              ),
 
-            ([('asdx', 'red'), ('yferx', 'blue'),  ('yfg', 'white')],
+            ([('asdx', 'red'), ('yferx', 'blue'), ('yfg', 'white')],
              ('xy', -1),
              [[('asd', 'red')], [('fer', 'blue')], [('fg', 'white')]],
              'diff color separator',
              ),
 
-            ([('asdx', 'red'), ('yferx', 'blue'),  ('yfg', 'white')],
+            ([('asdx', 'red'), ('yferx', 'blue'), ('yfg', 'white')],
              ('xy', 1),
              [[('asd', 'red')], [('ferx', 'blue'), ('yfg', 'white')]],
              'diff color separator and maxsplit',
              ),
 
-            ([('asdx', 'red'), ('yferx', 'blue'),  ('yfg', 'white')],
+            ([('asdx', 'red'), ('yferx', 'blue'), ('yfg', 'white')],
              ('xyz', -1),
              [[('asdx', 'red'), ('yferx', 'blue'), ('yfg', 'white')]],
              'no separator in Str',
              ),
 
-            ([('  asd ', 'red'), (' fer ', 'blue'),  (' fg ', 'white')],
+            ([('  asd ', 'red'), (' fer ', 'blue'), (' fg ', 'white')],
              (None, -1),
              [[('asd', 'red')], [('fer', 'blue')], [('fg', 'white')]],
              'separator is None',
              ),
 
-            ([('  asd ', 'red'), (' fer ', 'blue'),  (' fg ', 'white')],
+            ([('  asd ', 'red'), (' fer ', 'blue'), (' fg ', 'white')],
              (None, 1),
              [[('asd', 'red')], [('fer ', 'blue'), (' fg ', 'white')]],
              'separator is None and test maxsplit',
@@ -240,38 +241,38 @@ class TestColoredString(unittest.TestCase):
 
     def test_splitlines(self):
         color_cases = [
-            ([('asd\r', 'red'), ('fer\n', 'blue'),  ('fg\r\n', 'white')],
+            ([('asd\r', 'red'), ('fer\n', 'blue'), ('fg\r\n', 'white')],
              [True],
              [[('asd\r', 'red')], [('fer\n', 'blue')], [('fg\r\n', 'white')]],
              'test keepend true',
              ),
 
-            ([('asd\r', 'red'), ('fer\n', 'blue'),  ('fg\r\n', 'white')],
+            ([('asd\r', 'red'), ('fer\n', 'blue'), ('fg\r\n', 'white')],
              [False],
              [[('asd', 'red')], [('fer', 'blue')], [('fg', 'white')]],
              'test keepend false',
              ),
 
-            ([('asd\r', 'red'), ('\nfer', 'blue'),  ('fg', 'white')],
+            ([('asd\r', 'red'), ('\nfer', 'blue'), ('fg', 'white')],
              [True],
              [[('asd\r', 'red'), ('\n', 'blue')], [('fer', 'blue'), ('fg', 'white')]],
              '\\r\\n in diff color and keepend',
              ),
 
-            ([('asd\r', 'red'), ('\nfer', 'blue'),  ('fg', 'white')],
+            ([('asd\r', 'red'), ('\nfer', 'blue'), ('fg', 'white')],
              [False],
              [[('asd', 'red')], [('fer', 'blue'), ('fg', 'white')]],
              '\\r\\n in diff color and not keepend',
              ),
 
-            ([('\nasd\r', 'red'), ('\nfer', 'blue'),  ('fg\r\n', 'white')],
+            ([('\nasd\r', 'red'), ('\nfer', 'blue'), ('fg\r\n', 'white')],
              [True],
              [[('\n', 'red')], [('asd\r', 'red'), ('\n', 'blue')], [
                  ('fer', 'blue'), ('fg\r\n', 'white')]],
              'line break at the start and the end and keepend',
              ),
 
-            ([('\nasd\r', 'red'), ('\nfer', 'blue'),  ('fg\r\n', 'white')],
+            ([('\nasd\r', 'red'), ('\nfer', 'blue'), ('fg\r\n', 'white')],
              [False],
              [[('', 'red')], [('asd', 'red')], [
                  ('fer', 'blue'), ('fg', 'white')]],
@@ -290,9 +291,9 @@ class TestColoredString(unittest.TestCase):
              'colored string consisted of all line breaks and not keepend',
              ),
 
-            ([('asd ', 'red'), ('fer ', 'blue'),  ('fg', 'white')],
+            ([('asd ', 'red'), ('fer ', 'blue'), ('fg', 'white')],
              [True],
-             [[('asd ', 'red'), ('fer ', 'blue'),  ('fg', 'white')]],
+             [[('asd ', 'red'), ('fer ', 'blue'), ('fg', 'white')]],
              'no line break',
              ),
 
@@ -414,7 +415,7 @@ class TestColoredString(unittest.TestCase):
 
             ([[(' ', 'red')], [(' ', 'blue')]],
              [(' ', 'white')],
-             [(' ', 'red'), (' ', 'white'),  (' ', 'blue')],
+             [(' ', 'red'), (' ', 'white'), (' ', 'blue')],
              'colored blank space element with blank space separator',
              ),
 

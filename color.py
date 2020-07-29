@@ -285,18 +285,29 @@ _named_colors = {
     'white': 255,
 }
 
-def danger(v):  return Str(v, 'danger')
-def warn(v):    return Str(v, 'warn')
-def loaded(v):  return Str(v, 'loaded')
-def normal(v):  return Str(v, 'normal')
+
+def danger(v): return Str(v, 'danger')
+
+
+def warn(v): return Str(v, 'warn')
+
+
+def loaded(v): return Str(v, 'loaded')
+
+
+def normal(v): return Str(v, 'normal')
+
+
 def optimal(v): return Str(v, 'optimal')
+
 
 def dark(v): return Str(v, 'dark')
 
-def blue(v):   return Str(v, 'blue')
-def cyan(v):   return Str(v, 'cyan')
-def green(v):  return Str(v, 'green')
+
+def blue(v): return Str(v, 'blue')
+def cyan(v): return Str(v, 'cyan')
+def green(v): return Str(v, 'green')
 def yellow(v): return Str(v, 'yellow')
-def red(v):    return Str(v, 'red')
+def red(v): return Str(v, 'red')
 def purple(v): return Str(v, 'purple')
-def white(v):  return Str(v, 'white')
+def white(v): return Str(v, 'white')
