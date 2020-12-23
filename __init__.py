@@ -19,6 +19,14 @@ from .color import warn
 from .color import white
 from .color import yellow
 
+from .color import darkblue
+from .color import darkcyan
+from .color import darkgreen
+from .color import darkyellow
+from .color import darkred
+from .color import darkpurple
+from .color import darkwhite
+
 __version__ = "0.1.2"
 __name__ = "k3color"
 
@@ -39,4 +47,11 @@ __all__ = [
     "warn",
     "white",
     "yellow",
+    "darkblue",
+    "darkcyan",
+    "darkgreen",
+    "darkyellow",
+    "darkred",
+    "darkpurple",
+    "darkwhite",
 ]

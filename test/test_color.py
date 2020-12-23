@@ -47,7 +47,7 @@ class TestColoredString(unittest.TestCase):
 
         print("256 colors:")
         for c in range(16, 256):
-            if (c+2) % 6 == 0:
+            if (c + 2) % 6 == 0:
                 print()
             print(self.cs('{0:>3}'.format(c), c), end=' ')
 
@@ -63,6 +63,14 @@ class TestColoredString(unittest.TestCase):
         print(k3color.red('red'), end=' ')
         print(k3color.purple('purple'), end=' ')
         print(k3color.white('white'), end=' ')
+
+        print(k3color.darkblue('darkblue'), end=' ')
+        print(k3color.darkcyan('darkcyan'), end=' ')
+        print(k3color.darkgreen('darkgreen'), end=' ')
+        print(k3color.darkyellow('darkyellow'), end=' ')
+        print(k3color.darkred('darkred'), end=' ')
+        print(k3color.darkpurple('darkpurple'), end=' ')
+        print(k3color.darkwhite('darkwhite'), end=' ')
         print()
 
         print(k3color.dark('dark'), end=' ')
