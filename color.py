@@ -276,13 +276,25 @@ _named_colors = {
     'dark': _clrs[1],
 
     # for human
-    'blue': 67,
-    'cyan': 37,
-    'green': 46,
-    'yellow': 226,
-    'red': 196,
-    'purple': 128,
-    'white': 255,
+    'black': 0,
+
+    'darkgrey': 0,
+    'darkred': 1,
+    'darkgreen': 2,
+    'darkyellow': 3,
+    'darkblue': 4,
+    'darkpurple': 5,
+    'darkcyan': 6,
+    'darkwhite': 7,
+
+    'grey': 8,
+    'red': 9,
+    'green': 10,
+    'yellow': 11,
+    'blue': 12,
+    'purple': 13,
+    'cyan': 14,
+    'white': 15,
 }
 
 
@@ -311,3 +323,11 @@ def yellow(v): return Str(v, 'yellow')
 def red(v): return Str(v, 'red')
 def purple(v): return Str(v, 'purple')
 def white(v): return Str(v, 'white')
+
+def darkblue(v): return Str(v,   'darkblue')
+def darkcyan(v): return Str(v,   'darkcyan')
+def darkgreen(v): return Str(v,  'darkgreen')
+def darkyellow(v): return Str(v, 'darkyellow')
+def darkred(v): return Str(v,    'darkred')
+def darkpurple(v): return Str(v, 'darkpurple')
+def darkwhite(v): return Str(v,  'darkwhite')

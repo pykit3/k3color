@@ -19,7 +19,7 @@ from .color import warn
 from .color import white
 from .color import yellow
 
-__version__ = "0.1.1"
+__version__ = "0.1.2"
 __name__ = "k3color"
 
 __all__ = [

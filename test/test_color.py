@@ -38,9 +38,16 @@ class TestColoredString(unittest.TestCase):
 
     def test_show_all_colors(self):
 
+        print("16 colors:")
+        for c in range(16):
+            if c % 8 == 0:
+                print()
+            print(self.cs('{0:>3}'.format(c), c), end=' ')
+        print()
+
         print("256 colors:")
-        for c in range(256):
-            if c % 16 == 0:
+        for c in range(16, 256):
+            if (c+2) % 6 == 0:
                 print()
             print(self.cs('{0:>3}'.format(c), c), end=' ')
 
