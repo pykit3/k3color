@@ -3,7 +3,7 @@ import setuptools
 setuptools.setup(
     name="k3color",
     packages=["k3color"],
-    version="0.1.2",
+    version="0.1.3",
     license='MIT',
     description='create colored text on terminal',
     long_description="# k3color\n\n[![Build Status](https://travis-ci.com/pykit3/k3color.svg?branch=master)](https://travis-ci.com/pykit3/k3color)\n[![Documentation Status](https://readthedocs.org/projects/k3color/badge/?version=stable)](https://k3color.readthedocs.io/en/stable/?badge=stable)\n[![Package](https://img.shields.io/pypi/pyversions/k3color)](https://pypi.org/project/k3color)\n\ncreate colored text on terminal\n\nk3color is a component of [pykit3] project: a python3 toolkit set.\n\n\n# Install\n\n```\npip install k3color\n```\n\n# Synopsis\n\n```python\n# output text in blue:\n>>> blue('I am blue')\n '\\x01\\x1b[38;5;67m\\x02I am blue\\x01\\x1b[0m\\x02'\n\n```\n\n#   Author\n\nZhang Yanpo (张炎泼) <drdr.xp@gmail.com>\n\n#   Copyright and License\n\nThe MIT License (MIT)\n\nCopyright (c) 2015 Zhang Yanpo (张炎泼) <drdr.xp@gmail.com>\n\n\n[pykit3]: https://github.com/pykit3",
