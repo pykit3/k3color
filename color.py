@@ -253,6 +253,20 @@ def fading_color(v, total):
     return _clrs[_fading_idx(v, total)]
 
 
+def get_colors(colors, col_n):
+    if colors is None:
+        colors = []
+
+    colors = colors or ([None] * col_n)
+
+    while len(colors) < col_n:
+        colors.extend(colors)
+
+    colors = colors[:col_n]
+
+    return colors
+
+
 def _fading_idx(v, total=100):
     l = len(_clrs)
     pos = int(v * l / (total + 0.0001) + 0.5)
@@ -317,18 +331,42 @@ def dark(v): return Str(v, 'dark')
 
 
 def blue(v): return Str(v, 'blue')
+
+
 def cyan(v): return Str(v, 'cyan')
+
+
 def green(v): return Str(v, 'green')
+
+
 def yellow(v): return Str(v, 'yellow')
+
+
 def red(v): return Str(v, 'red')
+
+
 def purple(v): return Str(v, 'purple')
+
+
 def white(v): return Str(v, 'white')
 
 
 def darkblue(v): return Str(v, 'darkblue')
+
+
 def darkcyan(v): return Str(v, 'darkcyan')
+
+
 def darkgreen(v): return Str(v, 'darkgreen')
+
+
 def darkyellow(v): return Str(v, 'darkyellow')
+
+
 def darkred(v): return Str(v, 'darkred')
+
+
 def darkpurple(v): return Str(v, 'darkpurple')
+
+
 def darkwhite(v): return Str(v, 'darkwhite')

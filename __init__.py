@@ -8,6 +8,7 @@ from .color import cyan
 from .color import danger
 from .color import dark
 from .color import fading_color
+from .color import get_colors
 from .color import green
 from .color import loaded
 from .color import normal
@@ -27,7 +28,7 @@ from .color import darkred
 from .color import darkpurple
 from .color import darkwhite
 
-__version__ = "0.1.2"
+__version__ = "0.1.3"
 __name__ = "k3color"
 
 __all__ = [
@@ -37,6 +38,7 @@ __all__ = [
     "danger",
     "dark",
     "fading_color",
+    "get_colors",
     "green",
     "loaded",
     "normal",
