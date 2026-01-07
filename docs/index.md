@@ -4,35 +4,35 @@
 [![Documentation Status](https://readthedocs.org/projects/k3color/badge/?version=stable)](https://k3color.readthedocs.io/en/stable/?badge=stable)
 [![Package](https://img.shields.io/pypi/pyversions/k3color)](https://pypi.org/project/k3color)
 
-create colored text on terminal
+Create colored text on terminal.
 
-k3color is a component of [pykit3] project: a python3 toolkit set.
+k3color is a component of [pykit3](https://github.com/pykit3) project: a python3 toolkit set.
 
+## Installation
 
-# Install
-
-```
+```bash
 pip install k3color
 ```
 
-# Synopsis
+## Quick Start
 
 ```python
-# output text in blue:
->>> blue('I am blue')
- '\x01\x1b[38;5;67m\x02I am blue\x01\x1b[0m\x02'
+from k3color import blue, red, green
 
+# Output text in blue
+print(blue('I am blue'))
+
+# Output text in red
+print(red('Warning!'))
+
+# Output text in green
+print(green('Success!'))
 ```
 
-#   Author
+## API Reference
 
-Zhang Yanpo (张炎泼) <drdr.xp@gmail.com>
+::: k3color
 
-#   Copyright and License
+## License
 
-The MIT License (MIT)
-
-Copyright (c) 2015 Zhang Yanpo (张炎泼) <drdr.xp@gmail.com>
-
-
-[pykit3]: https://github.com/pykit3
+The MIT License (MIT) - Copyright (c) 2015 Zhang Yanpo (张炎泼)

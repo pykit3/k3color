@@ -27,8 +27,9 @@ from .color import darkred
 from .color import darkpurple
 from .color import darkwhite
 
-__version__ = "0.1.2"
-__name__ = "k3color"
+from importlib.metadata import version
+
+__version__ = version("k3color")
 
 __all__ = [
     "Str",

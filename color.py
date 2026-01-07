@@ -5,7 +5,7 @@ import re
 import string
 
 
-def percentage(percentage, total=100, ptn='{0}'):
+def percentage(percentage, total=100, ptn="{0}"):
     """
     Build a `Str` instance from pattern `ptn` and colorize it with color blue,
     green, yellow or red for value of `precentage` from 0 to `total`.
@@ -63,7 +63,7 @@ class Str(object):
             color = _named_colors[color]
 
         if isinstance(v, Str):
-            vs = ''.join([x[0] for x in v.elts])
+            vs = "".join([x[0] for x in v.elts])
             self.elts = [(vs, color)]
         else:
             self.elts = [(str(v), color)]
@@ -79,29 +79,28 @@ class Str(object):
             if e[1] is None:
                 val = e[0]
             else:
-                _clr = '\033[38;5;' + str(e[1]) + 'm'
-                _rst = '\033[0m'
+                _clr = "\033[38;5;" + str(e[1]) + "m"
+                _rst = "\033[0m"
 
                 if self._prompt:
-                    _clr = '\001' + _clr + '\002'
-                    _rst = '\001' + _rst + '\002'
+                    _clr = "\001" + _clr + "\002"
+                    _rst = "\001" + _rst + "\002"
 
                 val = _clr + str(e[0]) + _rst
 
             rst.append(val)
 
-        return ''.join(rst)
+        return "".join(rst)
 
     def __len__(self):
-        return sum([len(x[0])
-                    for x in self.elts])
+        return sum([len(x[0]) for x in self.elts])
 
     def __add__(self, other):
         prompt = self._prompt
         if isinstance(other, Str):
             prompt = prompt or other._prompt
 
-        c = Str('', prompt=prompt)
+        c = Str("", prompt=prompt)
         if isinstance(other, Str):
             c.elts = self.elts + other.elts
         else:
@@ -109,7 +108,7 @@ class Str(object):
         return c
 
     def __mul__(self, num):
-        c = Str('', prompt=self._prompt)
+        c = Str("", prompt=self._prompt)
         c.elts = self.elts * num
         return c
 
@@ -126,7 +125,7 @@ class Str(object):
         return ma.span()
 
     def _recover_colored_str(self, colored_chars):
-        rst = Str('')
+        rst = Str("")
         n = len(colored_chars)
         if n == 0:
             return rst
@@ -159,7 +158,7 @@ class Str(object):
             if keep_sep:
                 edge = e
 
-            rst.append(self._recover_colored_str(colored_chars[i:i + edge]))
+            rst.append(self._recover_colored_str(colored_chars[i : i + edge]))
 
             maxsplit -= 1
             i += e
@@ -170,13 +169,13 @@ class Str(object):
         # sep in the end
         # 'a b '  ->  ['a', 'b', '']
         elif keep_empty:
-            rst.append(Str(''))
+            rst.append(Str(""))
 
         return rst
 
     def _separate_str_and_colors(self):
         colored_char = []
-        line = ''
+        line = ""
         for elt in self.elts:
             for c in elt[0]:
                 colored_char.append((c, elt[1]))
@@ -186,9 +185,9 @@ class Str(object):
 
     def splitlines(self, *args):
         # to verify arguments
-        ''.splitlines(*args)
+        "".splitlines(*args)
 
-        sep = '\r(\n)?|\n'
+        sep = "\r(\n)?|\n"
         maxsplit = -1
         keep_empty = False
         keep_sep = False
@@ -201,7 +200,7 @@ class Str(object):
 
     def split(self, *args):
         # to verify arguments
-        ''.split(*args)
+        "".split(*args)
 
         sep, maxsplit = (list(args) + [None, None])[:2]
         if maxsplit is None:
@@ -213,7 +212,7 @@ class Str(object):
 
         i = 0
         if sep is None:
-            sep = r'\s+'
+            sep = r"\s+"
             keep_empty = False
 
             # to skip whitespaces at the beginning
@@ -225,7 +224,7 @@ class Str(object):
         return self._split(line[i:], colored_chars[i:], sep, maxsplit, keep_sep, keep_empty)
 
     def join(self, iterable):
-        rst = Str('')
+        rst = Str("")
         for i in iterable:
             if len(rst) == 0:
                 rst += i
@@ -254,81 +253,120 @@ def fading_color(v, total):
 
 
 def _fading_idx(v, total=100):
-    l = len(_clrs)
-    pos = int(v * l / (total + 0.0001) + 0.5)
-    pos = min(pos, l - 1)
+    n_colors = len(_clrs)
+    pos = int(v * n_colors / (total + 0.0001) + 0.5)
+    pos = min(pos, n_colors - 1)
     pos = max(pos, 0)
     return pos
 
 
 #  blue green yellow red
-_clrs = [63, 67, 37, 36, 41, 46, 82, 118,
-         154, 190, 226, 220, 214, 208, 202, 196]
+_clrs = [63, 67, 37, 36, 41, 46, 82, 118, 154, 190, 226, 220, 214, 208, 202, 196]
 
 _named_colors = {
     # by emergence levels
-    'danger': _clrs[_fading_idx(100)],
-    'warn': 3,
-    'loaded': _clrs[_fading_idx(30)],
-    'normal': 7,
-    'optimal': _clrs[_fading_idx(0)],
-
-    'dark': _clrs[1],
-
+    "danger": _clrs[_fading_idx(100)],
+    "warn": 3,
+    "loaded": _clrs[_fading_idx(30)],
+    "normal": 7,
+    "optimal": _clrs[_fading_idx(0)],
+    "dark": _clrs[1],
     # for human
-    'black': 0,
-
-    'darkgrey': 0,
-    'darkred': 1,
-    'darkgreen': 2,
-    'darkyellow': 3,
-    'darkblue': 4,
-    'darkpurple': 5,
-    'darkcyan': 6,
-    'darkwhite': 7,
-
-    'grey': 8,
-    'red': 9,
-    'green': 10,
-    'yellow': 11,
-    'blue': 12,
-    'purple': 13,
-    'cyan': 14,
-    'white': 15,
+    "black": 0,
+    "darkgrey": 0,
+    "darkred": 1,
+    "darkgreen": 2,
+    "darkyellow": 3,
+    "darkblue": 4,
+    "darkpurple": 5,
+    "darkcyan": 6,
+    "darkwhite": 7,
+    "grey": 8,
+    "red": 9,
+    "green": 10,
+    "yellow": 11,
+    "blue": 12,
+    "purple": 13,
+    "cyan": 14,
+    "white": 15,
 }
 
 
-def danger(v): return Str(v, 'danger')
+def danger(v):
+    return Str(v, "danger")
 
 
-def warn(v): return Str(v, 'warn')
+def warn(v):
+    return Str(v, "warn")
 
 
-def loaded(v): return Str(v, 'loaded')
+def loaded(v):
+    return Str(v, "loaded")
 
 
-def normal(v): return Str(v, 'normal')
+def normal(v):
+    return Str(v, "normal")
 
 
-def optimal(v): return Str(v, 'optimal')
+def optimal(v):
+    return Str(v, "optimal")
 
 
-def dark(v): return Str(v, 'dark')
+def dark(v):
+    return Str(v, "dark")
 
 
-def blue(v): return Str(v, 'blue')
-def cyan(v): return Str(v, 'cyan')
-def green(v): return Str(v, 'green')
-def yellow(v): return Str(v, 'yellow')
-def red(v): return Str(v, 'red')
-def purple(v): return Str(v, 'purple')
-def white(v): return Str(v, 'white')
+def blue(v):
+    return Str(v, "blue")
 
 
-def darkblue(v): return Str(v, 'darkblue')
-def darkcyan(v): return Str(v, 'darkcyan')
-def darkgreen(v): return Str(v, 'darkgreen')
-def darkyellow(v): return Str(v, 'darkyellow')
-def darkred(v): return Str(v, 'darkred')
-def darkpurple(v): return Str(v, 'darkpurple')
-def darkwhite(v): return Str(v, 'darkwhite')
+def cyan(v):
+    return Str(v, "cyan")
+
+
+def green(v):
+    return Str(v, "green")
+
+
+def yellow(v):
+    return Str(v, "yellow")
+
+
+def red(v):
+    return Str(v, "red")
+
+
+def purple(v):
+    return Str(v, "purple")
+
+
+def white(v):
+    return Str(v, "white")
+
+
+def darkblue(v):
+    return Str(v, "darkblue")
+
+
+def darkcyan(v):
+    return Str(v, "darkcyan")
+
+
+def darkgreen(v):
+    return Str(v, "darkgreen")
+
+
+def darkyellow(v):
+    return Str(v, "darkyellow")
+
+
+def darkred(v):
+    return Str(v, "darkred")
+
+
+def darkpurple(v):
+    return Str(v, "darkpurple")
+
+
+def darkwhite(v):
+    return Str(v, "darkwhite")
