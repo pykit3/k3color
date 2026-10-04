@@ -1,10 +1,8 @@
-#!/usr/bin/env python
-# coding: utf-8
-
 import unittest
 
-import k3color
 import k3ut
+
+import k3color
 
 dd = k3ut.dd
 
@@ -37,14 +35,14 @@ class TestColoredString(unittest.TestCase):
         for c in range(16):
             if c % 8 == 0:
                 print()
-            print(self.cs("{0:>3}".format(c), c), end=" ")
+            print(self.cs(f"{c:>3}", c), end=" ")
         print()
 
         print("256 colors:")
         for c in range(16, 256):
             if (c + 2) % 6 == 0:
                 print()
-            print(self.cs("{0:>3}".format(c), c), end=" ")
+            print(self.cs(f"{c:>3}", c), end=" ")
 
     def test_named_color(self):
         print()

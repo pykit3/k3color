@@ -9,6 +9,10 @@ create colored text on terminal
 k3color is a component of [pykit3] project: a python3 toolkit set.
 
 
+k3color creates colored text on terminal.
+
+
+
 # Install
 
 ```
@@ -21,7 +25,6 @@ pip install k3color
 # output text in blue:
 >>> blue('I am blue')
  '\x01\x1b[38;5;67m\x02I am blue\x01\x1b[0m\x02'
-
 ```
 
 #   Author

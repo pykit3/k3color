@@ -1,6 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
 import re
 import string
 
@@ -32,7 +29,7 @@ def percentage(percentage, total=100, ptn="{0}"):
     return Str(ptn.format(percentage), color)
 
 
-class Str(object):
+class Str:
     """
     `Str` is a string like object in terminal on Unix.
     `Str` provides with basic string operations and methods such as
@@ -200,7 +197,7 @@ class Str(object):
 
     def split(self, *args):
         # to verify arguments
-        "".split(*args)
+        "".split(*args)  # noqa: SIM905
 
         sep, maxsplit = (list(args) + [None, None])[:2]
         if maxsplit is None:

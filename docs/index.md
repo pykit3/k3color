@@ -20,13 +20,13 @@ pip install k3color
 from k3color import blue, red, green
 
 # Output text in blue
-print(blue('I am blue'))
+print(blue("I am blue"))
 
 # Output text in red
-print(red('Warning!'))
+print(red("Warning!"))
 
 # Output text in green
-print(green('Success!'))
+print(green("Success!"))
 ```
 
 ## API Reference
