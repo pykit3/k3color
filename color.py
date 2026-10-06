@@ -12,14 +12,14 @@ def percentage(percentage, total=100, ptn="{0}"):
         percentage(20, total=80, ptn='it is {0}')
 
     Args:
-        percentage: value to render.
+        percentage(float): value to render.
 
-        total: upper bound of percentage. By default it is 100.
+        total(float): upper bound of percentage. By default it is 100.
 
-        ptn: a pattern to create the text. By default it is `{0}`.
+        ptn(str): a pattern to create the text. By default it is `{0}`.
 
     Returns:
-        Str: colored text.
+        (Str): colored text.
 
     """
     if total > 0:
@@ -244,7 +244,7 @@ def fading_color(v, total):
             upper boundary.
 
     Returns:
-        int: a value used in terminal.
+        (int): a value used in terminal.
     """
     return _clrs[_fading_idx(v, total)]
 
