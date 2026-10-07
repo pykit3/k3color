@@ -42,12 +42,11 @@ class Str:
     `join()`.
 
     Args:
-
-        plain_str:
+        v(str | Str):
             the string to colourize.
 
-        color:
-            the color of **plain_str**.
+        color(int | str | None):
+            the color of **v**.
             It can also be a named color such as:
             `blue` `cyan` `green` `purple` `red` `white` `yellow`
             `optimal` `normal` `loaded` `warn` `danger`.
@@ -236,11 +235,10 @@ def fading_color(v, total):
     It returns blue for small `v`, then green, yellow and red if `v` is close to `total`.
 
     Args:
-
-        v:
+        v(int | float):
             a value between 0 and `total`.
 
-        total:
+        total(int | float):
             upper boundary.
 
     Returns:
