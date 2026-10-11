@@ -216,6 +216,12 @@ class TestColoredString(unittest.TestCase):
                 "separator is None and test maxsplit",
             ),
             (
+                [(" a", "red"), ("\xa0b", "blue")],
+                (None, -1),
+                [[("a", "red")], [("b", "blue")]],
+                "separator is None and unicode whitespace",
+            ),
+            (
                 [("  ", "red"), (" \r", "blue"), ("\n  ", "white")],
                 [None, -1],
                 [],

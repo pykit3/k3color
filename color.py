@@ -1,5 +1,4 @@
 import re
-import string
 
 
 def percentage(percentage, total=100, ptn="{0}"):
@@ -213,9 +212,9 @@ class Str:
 
             # to skip whitespaces at the beginning
             # ' a b'.split() -> ['a', 'b']
-            n = len(line)
-            while i < n and line[i] in string.whitespace:
-                i += 1
+            leading = re.match(sep, line)
+            if leading is not None:
+                i = leading.end()
         else:
             sep = re.escape(sep)
 
