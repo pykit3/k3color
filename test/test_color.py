@@ -360,6 +360,22 @@ class TestColoredString(unittest.TestCase):
                 [],
                 "blank string",
             ),
+            (
+                [("a\x0bb\x0cc\x1cd\x1de", "red"), ("\x1ef\x85g h i", "blue")],
+                [True],
+                [
+                    [("a\x0b", "red")],
+                    [("b\x0c", "red")],
+                    [("c\x1c", "red")],
+                    [("d\x1d", "red")],
+                    [("e", "red"), ("\x1e", "blue")],
+                    [("f\x85", "blue")],
+                    [("g ", "blue")],
+                    [("h ", "blue")],
+                    [("i", "blue")],
+                ],
+                "line boundaries other than \\r and \\n",
+            ),
         ]
 
         for _in, args, expected, msg in color_cases:
@@ -381,6 +397,11 @@ class TestColoredString(unittest.TestCase):
             dd("rst: ", rst)
             dd("expected: ", expect_rsts)
             self.assertEqual(rst, expect_rsts)
+
+            # Str(x) without a color renders only the text of x
+            plain_in = "".join(elt[0] for elt in _in)
+            plain_rst = [str(k3color.Str(x)) for x in rst]
+            self.assertEqual(plain_rst, plain_in.splitlines(*args))
 
     def test_join(self):
         string_case = [

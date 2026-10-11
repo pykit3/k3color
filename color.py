@@ -182,7 +182,8 @@ class Str:
         # to verify arguments
         "".splitlines(*args)
 
-        sep = "\r(\n)?|\n"
+        # the line boundaries of str.splitlines()
+        sep = "\r\n|[\n\r\x0b\x0c\x1c-\x1e\x85\u2028\u2029]"
         maxsplit = -1
         keep_empty = False
         keep_sep = False
