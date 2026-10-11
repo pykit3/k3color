@@ -216,6 +216,8 @@ class Str:
             n = len(line)
             while i < n and line[i] in string.whitespace:
                 i += 1
+        else:
+            sep = re.escape(sep)
 
         return self._split(line[i:], colored_chars[i:], sep, maxsplit, keep_sep, keep_empty)
 

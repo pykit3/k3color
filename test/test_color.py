@@ -222,6 +222,24 @@ class TestColoredString(unittest.TestCase):
                 [[("", None)]],
                 "blank string",
             ),
+            (
+                [("a.", "red"), ("b", "blue")],
+                (".", -1),
+                [[("a", "red")], [("b", "blue")]],
+                "literal dot separator",
+            ),
+            (
+                [("a|", "red"), ("b", "blue")],
+                ("|", -1),
+                [[("a", "red")], [("b", "blue")]],
+                "literal pipe separator",
+            ),
+            (
+                [("a\\", "red"), ("b", "blue")],
+                ("\\", -1),
+                [[("a", "red")], [("b", "blue")]],
+                "literal backslash separator",
+            ),
         ]
 
         for _in, args, expected, msg in color_cases:
@@ -244,6 +262,11 @@ class TestColoredString(unittest.TestCase):
             dd("rst: ", rst)
             dd("expected: ", expect_rsts)
             self.assertEqual(rst, expect_rsts)
+
+            # Str(x) without a color renders only the text of x
+            plain_in = "".join(elt[0] for elt in _in)
+            plain_rst = [str(k3color.Str(x)) for x in rst]
+            self.assertEqual(plain_rst, plain_in.split(*args))
 
     def test_splitlines(self):
         color_cases = [
