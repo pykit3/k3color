@@ -121,7 +121,7 @@ class Str:
         return ma.span()
 
     def _recover_colored_str(self, colored_chars):
-        rst = Str("")
+        rst = Str("", prompt=self._prompt)
         n = len(colored_chars)
         if n == 0:
             return rst
@@ -131,9 +131,9 @@ class Str:
             if head[1] == ch[1]:
                 head[0] += ch[0]
             else:
-                rst += Str(head[0], head[1])
+                rst += Str(head[0], head[1], prompt=self._prompt)
                 head = list(ch)
-        rst += Str(head[0], head[1])
+        rst += Str(head[0], head[1], prompt=self._prompt)
 
         return rst
 
@@ -165,7 +165,7 @@ class Str:
         # sep in the end
         # 'a b '  ->  ['a', 'b', '']
         elif keep_empty:
-            rst.append(Str(""))
+            rst.append(Str("", prompt=self._prompt))
 
         return rst
 

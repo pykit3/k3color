@@ -147,6 +147,24 @@ class TestColoredString(unittest.TestCase):
         not_prompt *= 3
         self.assertEqual(len(str(prompt)), len(str(not_prompt)) + 4 * 3)
 
+    def test_split_prompt(self):
+        s = k3color.Str("a b\nc ", "red", prompt=False)
+
+        rst = s.split(" ")
+        expected = [
+            k3color.Str("a", "red", prompt=False),
+            k3color.Str("b\nc", "red", prompt=False),
+            k3color.Str("", prompt=False),
+        ]
+        self.assertEqual(rst, expected)
+
+        rst = s.splitlines()
+        expected = [
+            k3color.Str("a b", "red", prompt=False),
+            k3color.Str("c ", "red", prompt=False),
+        ]
+        self.assertEqual(rst, expected)
+
     def test_split(self):
         color_cases = [
             (
