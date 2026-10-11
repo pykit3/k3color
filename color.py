@@ -221,7 +221,7 @@ class Str:
         return self._split(line[i:], colored_chars[i:], sep, maxsplit, keep_sep, keep_empty)
 
     def join(self, iterable):
-        rst = Str("")
+        rst = Str("", prompt=self._prompt)
         for idx, elt in enumerate(iterable):
             if idx == 0:
                 rst += elt

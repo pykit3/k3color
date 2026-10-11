@@ -165,6 +165,12 @@ class TestColoredString(unittest.TestCase):
         ]
         self.assertEqual(rst, expected)
 
+    def test_join_prompt(self):
+        sep = k3color.Str(",", "red", prompt=False)
+
+        rst = sep.join(["a", "b"])
+        self.assertEqual(str(rst), "a\x1b[38;5;9m,\x1b[0mb")
+
     def test_split(self):
         color_cases = [
             (
