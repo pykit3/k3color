@@ -223,11 +223,11 @@ class Str:
 
     def join(self, iterable):
         rst = Str("")
-        for i in iterable:
-            if len(rst) == 0:
-                rst += i
+        for idx, elt in enumerate(iterable):
+            if idx == 0:
+                rst += elt
             else:
-                rst += self + i
+                rst += self + elt
         return rst
 
 

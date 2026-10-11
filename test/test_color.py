@@ -390,6 +390,24 @@ class TestColoredString(unittest.TestCase):
                 [],
                 "iter with no element",
             ),
+            (
+                ["", "a"],
+                [(",", "red")],
+                [(",", "red"), ("a", None)],
+                "leading empty element",
+            ),
+            (
+                ["a", ""],
+                [(",", "red")],
+                [("a", None), (",", "red")],
+                "trailing empty element",
+            ),
+            (
+                ["a", "", "", "b"],
+                [(",", "red")],
+                [("a", None), (",", "red"), (",", "red"), (",", "red"), ("b", None)],
+                "consecutive empty elements",
+            ),
         ]
 
         for iterable, sep, expected, msg in string_case:
@@ -408,6 +426,11 @@ class TestColoredString(unittest.TestCase):
             dd("rst: ", rst)
             dd("expected: ", color_expected)
             self.assertEqual(rst, color_expected)
+
+            # Str(x) without a color renders only the text of x
+            plain_sep = "".join(elt[0] for elt in sep)
+            plain_rst = str(k3color.Str(rst))
+            self.assertEqual(plain_rst, plain_sep.join(iterable))
 
         ColoredString_case = [
             (
